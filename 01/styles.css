@@ -119,7 +119,7 @@
 /* ── glow green ── */
 @keyframes glow-5 {
   0%, 100% { opacity: 0.08; transform: translateY(0px)   scale(1); }
-  50%       { opacity: 1.00; transform: translateY(-22px) scale(1.04); }
+  50%       { opacity: 0.55; transform: translateY(-22px) scale(1.04); }
 }
 .hero-layer[data-layer="5"] {
   animation: glow-5 5200ms -2600ms ease-in-out infinite;
@@ -128,7 +128,7 @@
 /* ── glow blue ── */
 @keyframes glow-6 {
   0%, 100% { opacity: 0.10; transform: translateY(0px)   scale(1); }
-  50%       { opacity: 1.00; transform: translateY(-17px) scale(1.03); }
+  50%       { opacity: 0.50; transform: translateY(-17px) scale(1.03); }
 }
 .hero-layer[data-layer="6"] {
   animation: glow-6 6800ms -1700ms ease-in-out infinite;
@@ -137,7 +137,7 @@
 /* ── glow orange — fastest, most volatile ── */
 @keyframes glow-7 {
   0%, 100% { opacity: 0.06; transform: translateY(0px); }
-  50%       { opacity: 0.98; transform: translateY(-13px); }
+  50%       { opacity: 0.52; transform: translateY(-13px); }
 }
 .hero-layer[data-layer="7"] {
   animation: glow-7 4000ms -1000ms ease-in-out infinite;
