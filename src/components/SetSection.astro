@@ -1,0 +1,78 @@
+---
+interface Track {
+  num: string;
+  title: string;
+  artist: string;
+}
+
+interface Props {
+  artist: string;
+  videoId: string;
+  videoTitle: string;
+  tags: string[];
+  bio: string;
+  igHandle: string;
+  igUrl: string;
+  tracks: Track[];
+  tracklistId: string;
+}
+
+const { artist, videoId, videoTitle, tags, bio, igHandle, igUrl, tracks, tracklistId } = Astro.props;
+---
+<section class="set-section">
+  <div class="set-video">
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&color=white`}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+      title={videoTitle}>
+    </iframe>
+  </div>
+  <div class="set-info">
+    <h2 class="set-artist">{artist}</h2>
+    <div class="set-tags">
+      {tags.map(tag => <span class="tag">{tag}</span>)}
+    </div>
+    <p class="set-bio" set:html={bio} />
+    <a href={igUrl} target="_blank" rel="noopener noreferrer" class="set-ig">&nearr; @{igHandle}</a>
+    <div class="tracklist">
+      <button class="tracklist-toggle" aria-expanded="false" aria-controls={tracklistId}>
+        tracklist <span class="tracklist-chevron">+</span>
+      </button>
+      <div class="tracklist-body" id={tracklistId} aria-hidden="true">
+        {tracks.map(track => (
+          <div class="tracklist-item">
+            <span class="track-num">{track.num}</span>
+            <span class="track-title">{track.title}</span>
+            <span class="track-artist">{track.artist}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+{
+  document.querySelectorAll('.tracklist-toggle').forEach(btn => {
+    if ((btn as any)._bound) return;
+    (btn as any)._bound = true;
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const body = document.getElementById(btn.getAttribute('aria-controls')!) as HTMLElement;
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        body.setAttribute('aria-hidden', 'false');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.classList.add('is-open');
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+        body.setAttribute('aria-hidden', 'true');
+        body.style.maxHeight = '0';
+        body.classList.remove('is-open');
+      }
+    });
+  });
+}
+</script>

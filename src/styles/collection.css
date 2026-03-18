@@ -1,0 +1,203 @@
+/* ── collection page layout ── */
+.collection-page {
+  min-height: 100vh;
+  padding: var(--header-h) var(--gutter) 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.collection-header {
+  width: min(var(--content-max), 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0 56px;
+  gap: 12px;
+}
+
+.collection-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.collection-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+}
+.collection-tagline em {
+  font-style: italic;
+  color: var(--dim);
+}
+@media (max-width: 600px) {
+  .collection-tagline { text-align: center; }
+}
+
+/* ── cards grid ── */
+.cards-grid {
+  width: min(var(--content-max), 100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 24px;
+}
+
+/* ── edition card ── */
+.edition-card {
+  display: block;
+  text-decoration: none;
+  position: relative;
+}
+
+.edition-card.is-soon {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.card-artwork {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+  background-color: #080808;
+}
+
+/* Cover photo (boreal_01 only) */
+.card-photo {
+  position: absolute;
+  inset: 0;
+  background-image: url('/boreal_01_cover.jpg');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.edition-card:not(.is-soon):hover .card-photo {
+  transform: scale(1.03);
+}
+
+/* ─────────────────────────────────────────────────
+   GLOW LAYERS — same PNGs as edition hero, heavily
+   zoomed + blurred to create abstract color blobs.
+   mix-blend-mode: screen makes them additive light.
+───────────────────────────────────────────────── */
+.card-glow {
+  position: absolute;
+  inset: -50px; /* overshoot to hide blur edge fade */
+  background-size: 450%;
+  background-repeat: no-repeat;
+  filter: blur(38px) saturate(2.4);
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+
+.card-glow--green  { background-image: url('/boreal_hero/05_glow green.png');  background-position: 28% 38%; }
+.card-glow--blue   { background-image: url('/boreal_hero/06_glow blue.png');   background-position: 72% 62%; }
+.card-glow--orange { background-image: url('/boreal_hero/07_glow orange.png'); background-position: 50% 50%; }
+
+/* Different periods + negative delays → mid-cycle start, never sync */
+@keyframes card-glow-a {
+  0%, 100% { opacity: 0.08; }
+  50%       { opacity: 1.00; }
+}
+@keyframes card-glow-b {
+  0%, 100% { opacity: 0.10; }
+  50%       { opacity: 1.00; }
+}
+@keyframes card-glow-c {
+  0%, 100% { opacity: 0.06; }
+  50%       { opacity: 0.95; }
+}
+
+.card-glow--green  { animation: card-glow-a 5200ms -2600ms ease-in-out infinite; }
+.card-glow--blue   { animation: card-glow-b 6800ms -1700ms ease-in-out infinite; }
+.card-glow--orange { animation: card-glow-c 4000ms -1000ms ease-in-out infinite; }
+
+/* ── card body ── */
+.card-body {
+  padding: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-label {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+.card-meta {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  text-transform: lowercase;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.card-soon-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  color: var(--faint);
+  text-transform: lowercase;
+}
+
+/* ── footer ── */
+.collection-footer {
+  width: min(var(--content-max), 100%);
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.footer-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  color: var(--faint);
+  text-transform: lowercase;
+}
+
+.footer-credits {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(245,243,240,0.25);
+  text-transform: lowercase;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--white); }
+
+@media (max-width: 600px) {
+  .collection-footer { flex-direction: column; align-items: flex-start; }
+}

@@ -1,4 +1,4 @@
-/* ── boreal_01 / styles.css ── edition page ── */
+/* ── boreal_01 / edition.css ── edition page ── */
 
 /* ── hero ── */
 .hero {
@@ -38,26 +38,19 @@
   .hero-layer { background-position: left center; }
 }
 
-.hero-layer[data-layer="0"] { background-image: url('../boreal_hero/00_base.jpg'); }
-.hero-layer[data-layer="1"] { background-image: url('../boreal_hero/01_fill_black.png'); }
-.hero-layer[data-layer="2"] { background-image: url('../boreal_hero/02_diskshade.png'); }
-.hero-layer[data-layer="3"] { background-image: url('../boreal_hero/03_shade orange.png'); }
-.hero-layer[data-layer="4"] { background-image: url('../boreal_hero/04_shade white.png'); }
-.hero-layer[data-layer="5"] { background-image: url('../boreal_hero/05_glow green.png'); }
-.hero-layer[data-layer="6"] { background-image: url('../boreal_hero/06_glow blue.png'); }
-.hero-layer[data-layer="7"] { background-image: url('../boreal_hero/07_glow orange.png'); }
-.hero-layer[data-layer="8"] { background-image: url('../boreal_hero/08_white stroke.png'); }
-.hero-layer[data-layer="9"] { background-image: url('../boreal_hero/09_retouch.png'); }
+.hero-layer[data-layer="0"] { background-image: url('/boreal_hero/00_base.jpg'); }
+.hero-layer[data-layer="1"] { background-image: url('/boreal_hero/01_fill_black.png'); }
+.hero-layer[data-layer="2"] { background-image: url('/boreal_hero/02_diskshade.png'); }
+.hero-layer[data-layer="3"] { background-image: url('/boreal_hero/03_shade orange.png'); }
+.hero-layer[data-layer="4"] { background-image: url('/boreal_hero/04_shade white.png'); }
+.hero-layer[data-layer="5"] { background-image: url('/boreal_hero/05_glow green.png'); }
+.hero-layer[data-layer="6"] { background-image: url('/boreal_hero/06_glow blue.png'); }
+.hero-layer[data-layer="7"] { background-image: url('/boreal_hero/07_glow orange.png'); }
+.hero-layer[data-layer="8"] { background-image: url('/boreal_hero/08_white stroke.png'); }
+.hero-layer[data-layer="9"] { background-image: url('/boreal_hero/09_retouch.png'); }
 
 /* ─────────────────────────────────────────────────
    LAYER ANIMATIONS
-
-   Rules:
-   • Layer 0 (base): always opacity 1, no animation.
-   • Layers 1–4, 8–9: opacity-only — no transform.
-   • Layers 5–7 (glows): opacity + float — emphasized.
-   • All use unique periods + negative delays so they
-     start mid-cycle and never sync up identically.
 ───────────────────────────────────────────────── */
 
 /* Base: always present */
@@ -104,9 +97,7 @@
 }
 
 /* ─────────────────────────────────────────────────
-   GLOWS — screen blend mode so they mix like actual
-   coloured light on top of the scene. Opacity swings
-   from near-off to full, float adds physical life.
+   GLOWS — screen blend mode
 ───────────────────────────────────────────────── */
 .hero-layer[data-layer="5"],
 .hero-layer[data-layer="6"],
@@ -163,10 +154,10 @@
 
 /* ── reduced motion: freeze all at mid-opacity, no movement ── */
 @media (prefers-reduced-motion: reduce) {
-  .hero-layer[data-layer="1"] { opacity: 0.78; animation: none; }
+  .hero-layer[data-layer="1"] { opacity: 0.78; animation: none; transform: none; }
   .hero-layer[data-layer="2"] { opacity: 0.67; animation: none; }
   .hero-layer[data-layer="3"] { opacity: 0.52; animation: none; }
-  .hero-layer[data-layer="4"] { opacity: 0.42; animation: none; }
+  .hero-layer[data-layer="4"] { opacity: 0.42; animation: none; transform: none; }
   .hero-layer[data-layer="5"] { opacity: 0.54; animation: none; transform: none; }
   .hero-layer[data-layer="6"] { opacity: 0.55; animation: none; transform: none; }
   .hero-layer[data-layer="7"] { opacity: 0.52; animation: none; transform: none; }
@@ -174,8 +165,6 @@
   .hero-layer[data-layer="9"] { opacity: 0.88; animation: none; }
   .hero-title    { opacity: 0.90; animation: none; }
   .hero-subtitle { opacity: 0.80; animation: none; }
-  .hero-layer[data-layer="1"] { opacity: 0.78; animation: none; transform: none; }
-  .hero-layer[data-layer="4"] { opacity: 0.42; animation: none; transform: none; }
   .hero-gradient-bottom { opacity: 1.00; animation: none; }
   .hero-scroll-hint     { animation: none; transform: translateX(-50%); }
 }
@@ -218,7 +207,7 @@
   font-size: clamp(0.8rem, 2.4vw, 2rem);
   color: var(--white);
   letter-spacing: 0.45em;
-  padding-left: 0.45em; /* balance trailing letter-spacing so flex centering is optical */
+  padding-left: 0.45em;
   text-transform: lowercase;
   text-align: center;
   animation: subtitle-drift 10700ms -3900ms ease-in-out infinite;

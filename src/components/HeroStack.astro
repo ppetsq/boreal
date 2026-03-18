@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+<section class="hero" id="main-content">
+  <div class="hero-stack">
+    <div class="hero-layer" data-layer="0"></div>
+    <div class="hero-layer" data-layer="1"></div>
+    <div class="hero-layer" data-layer="2"></div>
+    <div class="hero-layer" data-layer="3"></div>
+    <div class="hero-layer" data-layer="4"></div>
+    <div class="hero-layer" data-layer="5"></div>
+    <div class="hero-layer" data-layer="6"></div>
+    <div class="hero-layer" data-layer="7"></div>
+    <div class="hero-layer" data-layer="8"></div>
+    <div class="hero-layer" data-layer="9"></div>
+  </div>
+  <div class="hero-gradient-bottom"></div>
+  <div class="hero-text-overlay">
+    <div class="hero-title">{title}</div>
+    <div class="hero-subtitle">{subtitle}</div>
+  </div>
+  <div class="hero-scroll-hint" id="scroll-hint">&darr; scroll</div>
+</section>
+
+<script>
+{
+  const scrollHint = document.getElementById('scroll-hint');
+  const heroEl = document.getElementById('main-content');
+  const heroStack = document.querySelector('.hero-stack') as HTMLElement;
+  const heroText = document.querySelector('.hero-text-overlay') as HTMLElement;
+  let heroH = heroEl!.offsetHeight;
+  window.addEventListener('resize', () => { heroH = heroEl!.offsetHeight; });
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 5) scrollHint!.classList.add('is-hidden');
+
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (y < heroH) {
+          heroStack.style.transform = `translateY(${y * 0.4}px)`;
+          heroText.style.transform = `translateY(${y * 0.15}px)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+</script>

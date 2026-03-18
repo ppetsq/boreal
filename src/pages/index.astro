@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import CollectionFooter from '../components/CollectionFooter.astro';
+import '../styles/collection.css';
+---
+<BaseLayout title="boreal music" description="DJ sets caught on camera, more music on the way.">
+  <Header activePage="home" />
+
+  <main class="collection-page" role="main" id="main-content">
+    <div class="collection-header">
+      <h1 class="collection-title">boreal</h1>
+      <p class="collection-tagline">/ˈbɔːrɪəl/ &nbsp;&middot;&nbsp; <em>adj.</em> &nbsp;&middot;&nbsp; of the north or northern regions.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- boreal_01 — cover photo + glow overlay -->
+      <a href="/01/" class="edition-card">
+        <div class="card-artwork">
+          <div class="card-photo"></div>
+          <div class="card-glow card-glow--green"></div>
+          <div class="card-glow card-glow--blue"></div>
+          <div class="card-glow card-glow--orange"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-label">boreal_01</div>
+          <div class="card-meta">rotterdam noord &mdash; 06.03.2026</div>
+          <div class="card-tags">
+            <span class="tag">percy thrills</span>
+            <span class="tag">petsq</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- boreal_02 — coming soon -->
+      <div class="edition-card is-soon" aria-hidden="true">
+        <div class="card-artwork">
+          <div class="card-glow card-glow--green" style="animation-delay:-900ms"></div>
+          <div class="card-glow card-glow--blue" style="animation-delay:-4300ms"></div>
+          <div class="card-glow card-glow--orange" style="animation-delay:-2100ms"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-label">boreal_02</div>
+          <div class="card-meta">&mdash;</div>
+          <div class="card-tags">
+            <span class="card-soon-label">soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- boreal_03 — coming soon -->
+      <div class="edition-card is-soon" aria-hidden="true">
+        <div class="card-artwork">
+          <div class="card-glow card-glow--green" style="animation-delay:-3800ms"></div>
+          <div class="card-glow card-glow--blue" style="animation-delay:-700ms"></div>
+          <div class="card-glow card-glow--orange" style="animation-delay:-3100ms"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-label">boreal_03</div>
+          <div class="card-meta">&mdash;</div>
+          <div class="card-tags">
+            <span class="card-soon-label">soon</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <CollectionFooter />
+  </main>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+interface Props {
+  activePage: string;
+}
+
+const { activePage } = Astro.props;
+
+const editions = [
+  { slug: '01', label: '_01', enabled: true },
+  { slug: '02', label: '_02', enabled: false },
+  { slug: '03', label: '_03', enabled: false },
+];
+---
+<header id="site-header">
+  <a href="/" class="header-logo">boreal music</a>
+  <nav>
+    {editions.map(ed => (
+      ed.enabled
+        ? <a href={`/${ed.slug}/`} class={activePage === ed.slug ? 'active' : ''}>{ed.label}</a>
+        : <a href="#" class="nav-link--disabled" aria-disabled="true" tabindex="-1">{ed.label}</a>
+    ))}
+  </nav>
+</header>
+
+<script>
+{
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header!.classList.toggle('is-scrolled', window.scrollY > 20);
+  }, { passive: true });
+}
+</script>

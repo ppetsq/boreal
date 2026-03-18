@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import HeroStack from '../../components/HeroStack.astro';
+import SetSection from '../../components/SetSection.astro';
+import EditionFooter from '../../components/EditionFooter.astro';
+import '../../styles/edition.css';
+
+const percyTracks = [
+  { num: '01', title: 'Karma', artist: 'Georges' },
+  { num: '02', title: 'Mars', artist: 'Farhot' },
+  { num: '03', title: 'Dance 2 Da Groove', artist: 'Kristoff MX' },
+  { num: '04', title: "It's True", artist: 'Scruscru, S. Timoshenk' },
+  { num: '05', title: 'Numbness', artist: 'Igor Gonya' },
+  { num: '06', title: 'Moyo Wangu feat. Hugo Kant (Bosq Remix)', artist: 'Renegades of Jazz' },
+  { num: '07', title: 'Let Me Blow Your Mind', artist: 'Happy Gutenberg' },
+  { num: '08', title: 'Back Into the Funky Groove', artist: 'Hotmood' },
+  { num: '09', title: 'Do It Again', artist: 'Serge Funk' },
+  { num: '10', title: 'I Can Feel', artist: 'Serge Funk' },
+  { num: '11', title: 'Boogie Feet', artist: 'Shabi' },
+  { num: '12', title: 'Dismissed', artist: 'Lean Low' },
+  { num: '13', title: 'La Luz', artist: 'Hotmood' },
+  { num: '14', title: 'Just House (Hotmood Remix)', artist: 'Scruscru' },
+  { num: '15', title: 'Ya Te Olvide', artist: 'Hotmood' },
+  { num: '16', title: 'Yes It Was', artist: 'Makito' },
+];
+
+const petsqTracks = [
+  { num: '01', title: 'Growing Gills', artist: 'Galen Tipton' },
+  { num: '02', title: 'Facebook Story', artist: 'Frank Ocean' },
+  { num: '03', title: 'Satisfied (Ambient Reprise)', artist: 'Catching Flies' },
+  { num: '04', title: 'Nova', artist: 'Burial + Four Tet' },
+  { num: '05', title: 'On Hold (Jamie xx Remix)', artist: 'The xx' },
+  { num: '06', title: 'How It Feels', artist: "Barry Can't Swim" },
+  { num: '07', title: "Can't Help It (No Vocals Edit)", artist: 'Baba Stiltz' },
+  { num: '08', title: 'Blood In The Snow (Tibi Dabo Remix)', artist: 'TEED' },
+  { num: '09', title: 'Sinai Ray', artist: 'ATRIP' },
+  { num: '10', title: 'Forever (Tom VR Remix)', artist: 'Verses GT' },
+  { num: '11', title: 'Brand Blvd', artist: 'RamonPang' },
+  { num: '12', title: 'Only Human (MPH Remix)', artist: 'KH' },
+  { num: '13', title: 'HELL OF A LIFE', artist: 'Villager' },
+  { num: '14', title: 'Joy (Back on 74) (Joy Anonymous Remix)', artist: 'Jungle' },
+  { num: '15', title: 'No Hook 3', artist: 'ADF Samski' },
+];
+---
+<BaseLayout title="boreal music" description="DJ sets caught on camera, more music on the way." ogImage="/og-image.jpg">
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/boreal_hero/00_base.jpg">
+    <link rel="preload" as="image" href="/boreal_hero/01_fill_black.png">
+    <link rel="preload" as="image" href="/boreal_hero/02_diskshade.png">
+    <link rel="preload" as="image" href="/boreal_hero/03_shade orange.png">
+    <link rel="preload" as="image" href="/boreal_hero/04_shade white.png">
+    <link rel="preload" as="image" href="/boreal_hero/05_glow green.png">
+    <link rel="preload" as="image" href="/boreal_hero/06_glow blue.png">
+  </Fragment>
+  <h1 class="visually-hidden">boreal_01 rotterdam noord</h1>
+  <Header activePage="01" />
+  <HeroStack title="boreal_01" subtitle="rotterdam_noord" />
+
+  <div class="edition-meta-bar">boreal_01 &mdash; rotterdam noord &mdash; 06.03.2026 &mdash; illustration by <a href="https://www.instagram.com/mattywhyz/" target="_blank" rel="noopener noreferrer" class="meta-link">Matty Zhang</a></div>
+
+  <div class="edition-content">
+    <SetSection
+      artist="Percy Thrills"
+      videoId="ABPIZK9na9I"
+      videoTitle="Percy Thrills — boreal_01, Rotterdam Noord"
+      tags={['disco', 'house', 'soul']}
+      bio="A warm, groove-heavy journey through classic disco, soulful house, and rare funk — Percy Thrills brings an infectious energy rooted in the dance floors of a bygone era."
+      igHandle="percythrillz"
+      igUrl="https://www.instagram.com/percythrillz/"
+      tracks={percyTracks}
+      tracklistId="tracklist-1"
+    />
+
+    <SetSection
+      artist="petsq"
+      videoId="QZ7tWhQMsgs"
+      videoTitle="petsq — boreal_01, Rotterdam Noord"
+      tags={['electronica', 'house', 'ambient']}
+      bio="Drifting between textured electronica, deep house, and ambient passages — petsq crafts sets that feel like a slow journey through light and space."
+      igHandle="petsq010"
+      igUrl="https://www.instagram.com/petsq010/"
+      tracks={petsqTracks}
+      tracklistId="tracklist-2"
+    />
+  </div>
+
+  <EditionFooter />
+</BaseLayout>

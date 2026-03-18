@@ -1,4 +1,4 @@
-/* ── boreal / styles-base.css ── shared foundation ── */
+/* ── boreal / base.css ── shared foundation ── */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -34,7 +34,6 @@ html, body {
   pointer-events: none;
   z-index: 200;
 }
-
 
 /* ── skip to content link ── */
 .skip-link {
@@ -135,5 +134,3 @@ html, body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-
-/* ── grain script (shared) ── */
