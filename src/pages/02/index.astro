@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import HeroStack from '../../components/HeroStack.astro';
+import SetSection from '../../components/SetSection.astro';
+import EditionFooter from '../../components/EditionFooter.astro';
+import '../../styles/edition.css';
+import '../../styles/edition-02.css';
+
+const percyTracks: { num: string; title: string; artist: string }[] = [];
+
+const petsqTracks: { num: string; title: string; artist: string }[] = [];
+---
+<BaseLayout title="boreal music" description="DJ sets caught on camera, more music on the way." ogImage="/og-image.jpg">
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/boreal_02_hero/00_base.jpg">
+    <link rel="preload" as="image" href="/boreal_02_hero/01_extendednwindow.png">
+    <link rel="preload" as="image" href="/boreal_02_hero/02_djset.png">
+    <link rel="preload" as="image" href="/boreal_02_hero/03_dj.png">
+    <link rel="preload" as="image" href="/boreal_02_hero/04_flowers.png">
+  </Fragment>
+  <h1 class="visually-hidden">boreal_02 het rotterdam collectief</h1>
+  <Header activePage="02" />
+  <HeroStack title="boreal_02" subtitle="het_rotterdam_collectief" />
+
+  <div class="edition-meta-bar">boreal_02 &mdash; het rotterdam collectief &mdash; 03.04.2026 &mdash; illustration by <a href="https://www.instagram.com/mattywhyz/" target="_blank" rel="noopener noreferrer" class="meta-link">Matty Zhang</a></div>
+
+  <div class="edition-content">
+    <SetSection
+      artist="petsq"
+      videoId="Mhlmwojo5vQ"
+      videoTitle="petsq — boreal_02, Het Rotterdam Collectief"
+      tags={['electronica', 'house', 'ambient']}
+      bio="Drifting between textured electronica, deep house, and ambient passages — petsq crafts sets that feel like a slow journey through light and space."
+      igHandle="petsq010"
+      igUrl="https://www.instagram.com/petsq010/"
+      tracks={petsqTracks}
+      tracklistId="tracklist-1"
+    />
+
+    <SetSection
+      artist="Percy Thrills"
+      videoId="ABPIZK9na9I"
+      videoTitle="Percy Thrills — boreal_02, Het Rotterdam Collectief"
+      tags={['disco', 'house', 'soul']}
+      bio="A warm, groove-heavy journey through classic disco, soulful house, and rare funk — Percy Thrills brings an infectious energy rooted in the dance floors of a bygone era."
+      igHandle="percythrillz"
+      igUrl="https://www.instagram.com/percythrillz/"
+      tracks={percyTracks}
+      tracklistId="tracklist-2"
+    />
+  </div>
+
+  <EditionFooter />
+</BaseLayout>

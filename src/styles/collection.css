@@ -69,15 +69,17 @@
   background-color: #080808;
 }
 
-/* Cover photo (boreal_01 only) */
+/* Cover photos */
 .card-photo {
   position: absolute;
   inset: 0;
-  background-image: url('/boreal_01_cover.jpg');
   background-size: cover;
   background-position: center;
   transition: transform 0.6s var(--ease-out-expo);
 }
+
+.card-photo:not(.card-photo--02) { background-image: url('/boreal_01_cover.jpg'); }
+.card-photo--02                  { background-image: url('/boreal_02_cover.jpg'); }
 
 .edition-card:not(.is-soon):hover .card-photo {
   transform: scale(1.03);

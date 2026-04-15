@@ -1,0 +1,66 @@
+/* ── boreal_02 hero overrides ── */
+
+.hero-subtitle {
+  font-size: clamp(0.52rem, 1.3vw, 1.15rem);
+}
+
+
+
+.hero-layer[data-layer="0"] { background-image: url('/boreal_02_hero/00_base.jpg'); }
+.hero-layer[data-layer="1"] { background-image: url('/boreal_02_hero/01_extendednwindow.png'); }
+.hero-layer[data-layer="2"] { background-image: url('/boreal_02_hero/02_djset.png'); }
+.hero-layer[data-layer="3"] { background-image: url('/boreal_02_hero/03_dj.png'); }
+.hero-layer[data-layer="4"] { background-image: url('/boreal_02_hero/04_flowers.png'); }
+
+/* Disable unused layers */
+.hero-layer[data-layer="5"],
+.hero-layer[data-layer="6"],
+.hero-layer[data-layer="7"],
+.hero-layer[data-layer="8"],
+.hero-layer[data-layer="9"] {
+  background-image: none;
+  opacity: 0;
+  animation: none;
+}
+
+@media (max-width: 768px) {
+  .hero-layer { background-position: center center; }
+}
+
+/* ── layer animations ── */
+
+.hero-layer[data-layer="0"] { opacity: 1; }
+
+@keyframes breathe-02-1 {
+  0%, 100% { opacity: 0.50; transform: translateY(0px) scale(1); }
+  50%       { opacity: 0.90; transform: translateY(-10px) scale(1.015); }
+}
+.hero-layer[data-layer="1"] {
+  will-change: opacity, transform;
+  animation: breathe-02-1 8200ms -3100ms ease-in-out infinite;
+}
+
+@keyframes breathe-02-2 {
+  0%, 100% { opacity: 0.40; }
+  50%       { opacity: 0.85; }
+}
+.hero-layer[data-layer="2"] {
+  animation: breathe-02-2 7400ms -5200ms ease-in-out infinite;
+}
+
+@keyframes breathe-02-3 {
+  0%, 100% { opacity: 0.35; transform: translateY(0px); }
+  50%       { opacity: 0.80; transform: translateY(-8px); }
+}
+.hero-layer[data-layer="3"] {
+  will-change: opacity, transform;
+  animation: breathe-02-3 9100ms -1800ms ease-in-out infinite;
+}
+
+@keyframes breathe-02-4 {
+  0%, 100% { opacity: 0.30; }
+  50%       { opacity: 0.70; }
+}
+.hero-layer[data-layer="4"] {
+  animation: breathe-02-4 6600ms -4400ms ease-in-out infinite;
+}

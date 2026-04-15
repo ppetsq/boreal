@@ -7,8 +7,8 @@ interface Track {
 
 interface Props {
   artist: string;
-  videoId: string;
-  videoTitle: string;
+  videoId?: string;
+  videoTitle?: string;
   tags: string[];
   bio: string;
   igHandle: string;
@@ -20,6 +20,7 @@ interface Props {
 const { artist, videoId, videoTitle, tags, bio, igHandle, igUrl, tracks, tracklistId } = Astro.props;
 ---
 <section class="set-section">
+  {videoId && (
   <div class="set-video">
     <iframe
       src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&color=white`}
@@ -29,6 +30,7 @@ const { artist, videoId, videoTitle, tags, bio, igHandle, igUrl, tracks, trackli
       title={videoTitle}>
     </iframe>
   </div>
+  )}
   <div class="set-info">
     <h2 class="set-artist">{artist}</h2>
     <div class="set-tags">
